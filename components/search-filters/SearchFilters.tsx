@@ -15,15 +15,26 @@ const SearchFilters = () => {
   const [locationData, setLocationData] = useState([]);
 
   useEffect(() => {
-    if (location !== '') {
-      const  fetchLocationData = async () => {
-        setLoading(true);
-        const data = await fetchApi(`${baseUrl}/auto-complete?query=${location}`);
-        setLoading(false);
-        setLocationData(data?.hits); 
+    setTimeout(() => {
+      if (location) {
+        const  fetchLocationData = async () => {
+          setLoading(true);
+          try {
+            const data = await fetchApi(`${baseUrl}/auto-complete?query=${location}`);
+            setLoading(false);
+            setLocationData(data?.hits); 
+          } catch (error) {
+            console.log(error);
+          }
+        }
+        fetchLocationData();
       }
-      fetchLocationData();
-    }
+  
+      if (location === '') {
+        setLoading(false);
+        setLocationData([]);
+      }
+    }, 1000)
   }, [location]);
 
   const searchProperties = (filterValues: any) => {
@@ -55,9 +66,8 @@ const SearchFilters = () => {
       ))}
       <Flex flexDir="column">
       <Button
-        mt="2"
         border='1px'
-        borderColor='gray.200s'
+        borderColor='gray.200'
         onClick={() => setToggleSearchByLocation(prev => !prev)}
       >Search by Location</Button>
       {toggleSearchByLocation && (
@@ -66,9 +76,10 @@ const SearchFilters = () => {
           value={location}
           w='300px'
           focusBorderColor='gray.300'
+          disabled={loading}
           onChange={(e) => setLocation(e.target.value)}
         />
-        {location !== '' && (
+        {location !== '' && !loading && (
           <Icon 
             as={MdCancel}
             pos='absolute'
@@ -76,7 +87,10 @@ const SearchFilters = () => {
             right='5'
             top='5'
             zIndex='100'
-            onClick={() => setLocation('')}
+            onClick={() => {
+              setLocation('');
+              setLocationData([]);
+            }}
           />
         )}
         {loading && <Spinner margin='auto' marginTop='3' />}
