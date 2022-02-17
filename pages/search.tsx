@@ -66,8 +66,6 @@ const Search: NextPage = ({
   );
 };
 
-export default Search;
-
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const purpose = query.purpose || 'for-rent';
   const rentFrequency = query.rentFrequency || 'yearly';
@@ -90,3 +88,5 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
     },
   };
 };
+
+export default Search;

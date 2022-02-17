@@ -88,8 +88,6 @@ const Home: NextPage = ({
   );
 };
 
-export default Home;
-
 export const getStaticProps: GetStaticProps = async () => {
   const propertiesForSale = await fetchApi(
     `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`
@@ -106,3 +104,5 @@ export const getStaticProps: GetStaticProps = async () => {
     },
   };
 };
+
+export default Home;

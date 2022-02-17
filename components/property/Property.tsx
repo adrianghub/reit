@@ -23,7 +23,7 @@ export interface IndividualPropertyProp {
   agency: any;
   isVerified: boolean;
   id: number;
-  externalId: string;
+  externalID: string;
 }
 
 interface Photo {
@@ -41,10 +41,10 @@ const Property = ({
     area,
     agency,
     isVerified,
-    externalId,
+    externalID,
   },
 }: PropertyProps) => (
-  <Link href={`/property/${externalId}`} passHref>
+  <Link href={`/property/${externalID}`} passHref>
     <Flex
       flexWrap="wrap"
       w="420px"
