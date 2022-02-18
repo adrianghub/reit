@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Avatar, Box, Flex, Spacer, Text } from '@chakra-ui/react';
 import { FaBed, FaBath } from 'react-icons/fa';
 import { BsGridFill } from 'react-icons/bs';
@@ -96,20 +97,24 @@ const PropertyDetails: NextPage = ({
               Amenities
             </Text>
             <Flex flexWrap="wrap">
-              {amenities.map((item) =>
-                item.amenities.map((amenity) => (
-                  <Text
-                    key={amenity.text}
-                    color="blue.400"
-                    fontSize="l"
-                    p="2"
-                    bg="gray.200"
-                    m="1"
-                    borderRadius="5"
-                  >
-                    {amenity.text}
-                  </Text>
-                ))
+              {amenities.map((item: { amenities: any[] }) =>
+                item.amenities.map(
+                  (amenity: { text: {} | null | undefined }) => (
+                    <Text
+                      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                      // @ts-ignore
+                      key={amenity.text}
+                      color="blue.400"
+                      fontSize="l"
+                      p="2"
+                      bg="gray.200"
+                      m="1"
+                      borderRadius="5"
+                    >
+                      {amenity.text}
+                    </Text>
+                  )
+                )
               )}
             </Flex>
           </>

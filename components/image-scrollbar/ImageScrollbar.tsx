@@ -35,7 +35,7 @@ const RightArrow = () => {
   );
 };
 
-const ImageScrollbar = (data: { id: string; url: string }[]) => (
+const ImageScrollbar = ({ data }: { data: { id: string; url: string }[] }) => (
   <ScrollMenu
     LeftArrow={LeftArrow}
     RightArrow={RightArrow}
