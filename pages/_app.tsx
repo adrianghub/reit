@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { AppProps } from 'next/app';
 import Router from 'next/router';
 import Head from 'next/head';
@@ -31,6 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <ChakraProvider>
         <Layout>
+          {/* @ts-ignore */}
           <Component {...pageProps} />
         </Layout>
       </ChakraProvider>

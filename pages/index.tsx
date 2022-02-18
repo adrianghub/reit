@@ -65,7 +65,7 @@ const Home: NextPage = ({
         "
       />
       <Flex flexWrap="wrap">
-        {propertiesForRent.map((property) => (
+        {propertiesForRent.map((property: IndividualPropertyProp) => (
           <Property property={property} key={property.id} />
         ))}
       </Flex>
