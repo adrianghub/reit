@@ -99,6 +99,7 @@ const PropertyDetails: NextPage = ({
             <Flex flexWrap="wrap">
               {amenities.map((item: { amenities: any[] }) =>
                 item.amenities.map(
+                  // eslint-disable-next-line @typescript-eslint/ban-types
                   (amenity: { text: {} | null | undefined }) => (
                     <Text
                       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
