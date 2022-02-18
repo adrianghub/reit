@@ -35,14 +35,14 @@ const RightArrow = () => {
   );
 };
 
-const ImageScrollbar = ({ data }: { image: { id: string; url: string } }) => (
+const ImageScrollbar = (data: { id: string; url: string }[]) => (
   <ScrollMenu
     LeftArrow={LeftArrow}
     RightArrow={RightArrow}
     // @ts-ignore
     style={{ overflow: 'hidden' }}
   >
-    {data.map((image: { id: string; url: string }) => (
+    {data.map((image) => (
       <Box
         width="910px"
         key={image.id}
