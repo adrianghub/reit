@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useContext } from 'react';
 import Image from 'next/image';
 import { Box, Icon, Flex } from '@chakra-ui/react';
@@ -34,16 +35,18 @@ const RightArrow = () => {
   );
 };
 
-const ImageScrollbar = ({ data }) => (
+const ImageScrollbar = ({ data }: { image: { id: string; url: string } }) => (
   <ScrollMenu
     LeftArrow={LeftArrow}
     RightArrow={RightArrow}
+    // @ts-ignore
     style={{ overflow: 'hidden' }}
   >
     {data.map((image: { id: string; url: string }) => (
       <Box
         width="910px"
         key={image.id}
+        // @ts-ignore
         itemId={image.id}
         overflow="hidden"
         padding="1"
