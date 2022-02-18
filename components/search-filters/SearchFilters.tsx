@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useEffect, useState } from 'react';
 import {
   Flex,
@@ -17,7 +18,7 @@ import noResults from '../../assets/images/noresults.svg';
 import { baseUrl, fetchApi } from '../../utils/fetchApi';
 
 const SearchFilters = () => {
-  const [filters, setFilters] = useState(filterData);
+  const [filters] = useState(filterData);
   const [toggleSearchByLocation, setToggleSearchByLocation] = useState(false);
   const [location, setLocation] = useState('');
   const [loading, setLoading] = useState(false);
@@ -48,7 +49,8 @@ const SearchFilters = () => {
     }, 1000);
   }, [location]);
 
-  const searchProperties = (filterValues: any) => {
+  // @ts-ignore
+  const searchProperties = (filterValues) => {
     const path = router.pathname;
     const { query } = router;
 

@@ -88,6 +88,7 @@ const PropertyDetails: NextPage = ({
           <Text fontWeight="bold">{furnishingStatus}</Text>
         </Flex>
       )}
+      <Spacer />
       <Box>
         {amenities.length && (
           <>
